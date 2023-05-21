@@ -18,33 +18,38 @@ def is_same_methods(method1: typing.Callable, method2: typing.Callable) -> bool:
     return True
 
 
+def is_same_classes(class1: typing.Type, class2: typing.Type) -> bool:
+    return set(dir(class1)) == set(dir(class2))
+
+
 class InterfaceMeta(type):
     interfaceCls = None
-    
-    def __new__(cls, name, bases, args):        
+
+    def __new__(cls, name, bases, args):
         if name == 'Interface' and cls.interfaceCls is None:
             cls.interfaceCls = super().__new__(cls, name, bases, args)
             return super().__new__(cls, name, bases, args)
-        
-        parent_class = bases[0] or None
-        if set(dir(cls.interfaceCls)) == set(dir(parent_class.__bases__[0])):
-            methods = {k: v for k,v in args.items() if callable(v)}
-            parent_methods = {k: v for k,v in parent_class.__dict__.items() if callable(v)}
 
-            not_implemented_methods = []
-            
-            for methodNameP, methodP in parent_methods.items():
-                methodCh = methods.get(methodNameP, None)
-                if methodCh is None:
-                    not_implemented_methods.append(methodNameP)
-                    continue
+        interfaces = [b for b in bases if is_same_classes(b.__bases__[0], cls.interfaceCls)]
+
+        if interfaces:
+            methods = {k: v for k, v in args.items() if callable(v)}
+
+            for interface in interfaces:
+                interface_methods = {k: v for k, v in interface.__dict__.items() if callable(v)}
+
+                not_implemented_methods = []
+
+                for method_name, method in interface_methods.items():
+                    implementing_method = methods.get(method_name, None)
+
+                    if implementing_method is None or not is_same_methods(method, implementing_method):
+                        not_implemented_methods.append(method_name)
                 
-                if not is_same_methods(methodP, methodCh):
-                    raise NotImplementedError(f"{name}.{methodCh.__name__} method signature differs from {parent_class.__name__}.{methodP.__name__} signature")
-            
-            if len(not_implemented_methods) != 0:
-                raise NotImplementedError(f"{name} is not implementing {parent_class.__name__} methods: {' '.join(not_implemented_methods)}")
-        
+                if not_implemented_methods:
+                    raise NotImplementedError(
+                        f"{name} is not implementing methods from {interface.__name__}: {', '.join(not_implemented_methods)}")
+
         return super().__new__(cls, name, bases, args)
 
 

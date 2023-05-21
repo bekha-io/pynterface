@@ -4,3 +4,4 @@ dist
 pynterface.egg-info
 build
 test.py
+ideas.md
