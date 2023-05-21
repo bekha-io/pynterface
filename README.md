@@ -64,4 +64,4 @@ In this example, the `Toyota` class properly implements the `beep` method define
 
 ## Contributing
 
-Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue on the [GitHub repository](https://github.com/example/interfacechecker). Additionally, pull requests are also appreciated.
+Contributions are welcome! If you find any issues or have suggestions for improvements, please open an issue on the [GitHub repository](https://github.com/bekha-io/pynterface). Additionally, pull requests are also appreciated.
