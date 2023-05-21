@@ -1,5 +1,7 @@
 # Pynterface
 
+<p align=center><img src="https://user-images.githubusercontent.com/81781443/239747868-95aa6941-0400-4ee7-b2b7-86f0e02fd247.png" width=320/></p>
+
 The `pynterface` library provides a mechanism for enforcing strict adherence to interfaces in Python. It allows you to define interfaces using the `Interface` class and ensures that all implementing classes properly implement the required methods defined in the interface.
 
 ## Installation
