@@ -61,8 +61,27 @@ class Toyota(Car):
         # Implementation code here
         pass
 ```
-
 In this example, the `Toyota` class properly implements the `beep` method defined in the `Car` interface.
+
+<br>
+
+```python
+class Car(Interface):
+    def beep(self) -> str: ...
+
+
+class Animal(Interface):
+    def roar(self) -> str: ...
+
+
+class Toyota(Car, Animal):
+    def beep(self) -> str:
+        # Implementation code here
+        pass
+```
+
+This code raises a `NotImplementedError` because the `Toyota` class inherits from the `Animal` class but does not implement the `roar` method defined in the interface.
+
 
 ## Contributing
 
