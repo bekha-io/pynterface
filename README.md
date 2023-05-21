@@ -22,7 +22,7 @@ To define an interface, create a class that inherits from the `Interface` class:
 from pynterface import Interface
 
 class Car(Interface):
-    def beep() -> str: ...
+    def beep(self) -> str: ...
 ```
 
 In this example, the `Car` interface defines a single method called `beep` which should return a string value.
@@ -33,7 +33,7 @@ To implement an interface, create a class that inherits from the interface class
 
 ```python
 class Toyota(Car):
-    def beep() -> str:
+    def beep(self) -> str:
         # Implementation code here
         pass
 ```
@@ -54,10 +54,10 @@ Here's a complete example that demonstrates the usage of the `pynterface` librar
 from pynterface import Interface
 
 class Car(Interface):
-    def beep() -> str: ...
+    def beep(self) -> str: ...
 
 class Toyota(Car):
-    def beep() -> str:
+    def beep(self) -> str:
         # Implementation code here
         pass
 ```
