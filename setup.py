@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='pynterface',
+    name='pynterfacelib',
     version='1.0.0',
     description='Library for checking interface compliance in Python',
     long_description='''pynterface is a library that provides a mechanism for enforcing strict adherence to interfaces in Python. It allows you to define interfaces and ensures that all implementing classes properly implement the required methods defined in the interface.''',

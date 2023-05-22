@@ -9,7 +9,7 @@ The `pynterface` library provides a mechanism for enforcing strict adherence to 
 You can install the `pynterface` library using pip:
 
 ```shell
-pip install pynterface
+pip install pynterfacelib
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ pip install pynterface
 To define an interface, create a class that inherits from the `Interface` class:
 
 ```python
-from pynterface import Interface
+from pynterfacelib import Interface
 
 class Car(Interface):
     def beep(self) -> str: ...
@@ -51,7 +51,7 @@ The `InterfaceMeta` metaclass automatically performs the interface checking proc
 Here's a complete example that demonstrates the usage of the `pynterface` library:
 
 ```python
-from pynterface import Interface
+from pynterfacelib import Interface
 
 class Car(Interface):
     def beep(self) -> str: ...
