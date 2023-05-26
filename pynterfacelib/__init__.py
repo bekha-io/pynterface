@@ -55,3 +55,9 @@ class InterfaceMeta(type):
 
 class Interface(metaclass=InterfaceMeta):
     pass
+
+
+def implements(obj: typing.Union[typing.Type, typing.Any], interfaces: typing.Union[typing.Type[Interface], typing.Sequence[typing.Type[Interface]]]):
+    if inspect.isclass(obj):
+        return issubclass(obj, interfaces)
+    return isinstance(obj, interfaces)
