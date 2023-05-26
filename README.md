@@ -82,6 +82,15 @@ class Toyota(Car, Animal):
 
 This code raises a `NotImplementedError` because the `Toyota` class inherits from the `Animal` class but does not implement the `roar` method defined in the interface.
 
+You can also dynamically check whether a class or an object implements an interface:
+```python
+from pynterfacelib import implements
+
+implements(Cat, Animal) # True
+implements(Cat(), Animal) # True
+implements(Animal, Cat)  # False
+```
+
 
 ## Contributing
 
